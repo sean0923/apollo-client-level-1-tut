@@ -1,12 +1,39 @@
 import React from 'react';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
-import '../../App.css';
+const POSTS_QUERY = gql`
+  {
+    posts {
+      id
+      title
+      body
+    }
+  }
+`;
 
 const Body = () => {
   return (
-    <p className="App-intro">
-      To get started, edit <code>src/App.js</code> and save to reload.
-    </p>
+    <div>
+      <Query query={POSTS_QUERY}>
+        {({ loading, data }) => {
+          if (loading) return <div>Loading...</div>;
+          const { posts } = data;
+
+          return (
+            <div>
+              {posts.map(({ title }, idx) => {
+                return (
+                  <div key={idx}>
+                    <h2>{title}</h2>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }}
+      </Query>
+    </div>
   );
 };
 
