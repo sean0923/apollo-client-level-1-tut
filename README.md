@@ -32,3 +32,9 @@ class Layout extends Component {
 }
 ```
 
+### 03 - Writing Our First GraphQL Query
+npm install grapql-tag
+
+- testing query with gql
+- go to graphcms setting public api permission to READ
+- can get data by client.query -> return promise so need to get data
