@@ -48,3 +48,31 @@ client
   })
   .then(({ data }) => console.log('data: ', data));
 ```
+
+### 04 - The Query Component
+```js
+import { Query } from 'react-apollo';
+```
+
+use Query component in `Body.js` to render 
+
+```js
+<Query query={POSTS_QUERY}>
+  {({ loading, data }) => {
+    if (loading) return <div>Loading...</div>;
+    const { posts } = data;
+
+    return (
+      <div>
+        {posts.map(({ title }, idx) => {
+          return (
+            <div key={idx}>
+              <h2>{title}</h2>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }}
+</Query>
+```
