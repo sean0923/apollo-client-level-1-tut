@@ -76,3 +76,42 @@ use Query component in `Body.js` to render
   }}
 </Query>
 ```
+
+### 05 - Apollo Dev Tool
+install apollo devtool (Chrome Extension)
+- graphiql interface
+- Queries
+- Mutations
+- Cache
+
+### 06 - Named Queries
+If you don't name your query then 
+apollo devtool will show queries with 1. 2.
+
+from 
+
+```graphql
+const POSTS_QUERY = gql`
+  {
+    posts {
+      id
+      title
+      body
+    }
+  }
+`;
+```
+
+to 
+
+```graphql
+const POSTS_QUERY = gql`
+  query allPosts {
+    posts {
+      id
+      title
+      body
+    }
+  }
+`;
+```
