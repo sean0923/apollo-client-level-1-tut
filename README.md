@@ -17,7 +17,7 @@ const client = new ApolloClient({
 ```
 
 - wrap component with ApolloProvider with client as a prop
-```javascript
+```js
 class Layout extends Component {
   render() {
     return (
@@ -38,3 +38,11 @@ npm install grapql-tag
 - testing query with gql
 - go to graphcms setting public api permission to READ
 - can get data by client.query -> return promise so need to get data
+
+```js
+client
+  .query({
+    query: testQuery,
+  })
+  .then(({ data }) => console.log('data: ', data));
+```
