@@ -156,6 +156,10 @@ const Post = ({ match: { params: { id } } }) => {
 ```
 - get id from above code
 
+### 11 - Understanding Mutations
+- go go graphcms
+- click setting on sidebar
+- click public api permission dropdown from read -> open
+- write mutation at graphcms
 
-
-
+### 12 - The Mutation Component

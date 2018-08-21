@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { BrowserRouter } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
@@ -16,10 +16,12 @@ class Layout extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <div className="App">
-          <Header />
-          <Router />
-        </div>
+        <BrowserRouter>
+          <div className="App">
+            <Header />
+            <Router />
+          </div>
+        </BrowserRouter>
       </ApolloProvider>
     );
   }
