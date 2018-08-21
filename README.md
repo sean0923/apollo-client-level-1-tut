@@ -132,5 +132,30 @@ npm install react-router-dom
 </BrowserRouter>
 ```
 
+### 10 - Variables in Query
+- test query at graphcms
+```graphql
+const POST_QUERY = gql`
+  query onePost($id: ID!) {
+    post(where: { id: $id }) {
+      id
+      title
+      body
+    }
+  }
+`;
+```
+
+- becase Post.js component came from Route 
+it get react router props
+
+```js
+const Post = ({ match: { params: { id } } }) => {
+  ...
+}
+```
+- get id from above code
+
+
 
 
