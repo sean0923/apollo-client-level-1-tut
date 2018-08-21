@@ -1,6 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import { Link } from 'react-router-dom';
 
 const POSTS_QUERY = gql`
   query allPosts {
@@ -12,7 +13,7 @@ const POSTS_QUERY = gql`
   }
 `;
 
-const Body = () => {
+const Home = () => {
   return (
     <div>
       <Query query={POSTS_QUERY}>
@@ -22,11 +23,11 @@ const Body = () => {
 
           return (
             <div>
-              {posts.map(({ title }, idx) => {
+              {posts.map(({ title, id }, idx) => {
                 return (
-                  <div key={idx}>
+                  <Link key={idx} to={`/post/${id}`}>
                     <h2>{title}</h2>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
@@ -37,4 +38,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default Home;

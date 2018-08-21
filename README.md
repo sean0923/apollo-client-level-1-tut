@@ -24,7 +24,7 @@ class Layout extends Component {
       <ApolloProvider client={client}>
         <div className="App">
           <Header />
-          <Body />
+          <Home />
         </div>
       </ApolloProvider>
     );
@@ -54,7 +54,7 @@ client
 import { Query } from 'react-apollo';
 ```
 
-use Query component in `Body.js` to render 
+use Query component in `Home.js` to render 
 
 ```js
 <Query query={POSTS_QUERY}>
@@ -115,3 +115,22 @@ const POSTS_QUERY = gql`
   }
 `;
 ```
+
+
+### 08 - Set up React router
+```
+npm install react-router-dom
+```
+
+- seperate Router component
+```js
+<BrowserRouter>
+  <Switch>
+    <Route exact path="/" component={Home} />
+    <Route exact path="/post/:id" component={Post} />
+  </Switch>
+</BrowserRouter>
+```
+
+
+
