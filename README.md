@@ -163,3 +163,31 @@ const Post = ({ match: { params: { id } } }) => {
 - write mutation at graphcms
 
 ### 12 - The Mutation Component
+- write createPostMutation with gql
+```graphql
+const CREATE_POST_MUTATION = gql`
+  mutation createPost($title: String, $body: String) {
+    createPost(data: { title: $title, body: $body }) {
+      id
+      title
+      body
+      status
+    }
+  }
+`;
+```
+- Mutation component 
+```js
+<Mutation mutation={CREATE_POST_MUTATION}>
+  {(createPost, { data }) => {
+    return (
+      <FormWrapper
+        onSubmit={e => {
+          e.preventDefault();
+          createPost({ variables: { title, body } }).then(() => {
+            initializeState();
+          });
+        }}
+      >
+```
+- createPost return promise so you can do .then and .catch

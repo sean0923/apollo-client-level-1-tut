@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class RenderPropsForForm extends Component {
   constructor(props) {
     super(props);
-    this.state = props.state;
+    this.state = { ...props.state };
   }
 
   handleOnChange = e => {
@@ -12,19 +12,17 @@ class RenderPropsForForm extends Component {
     });
   };
 
-  handleOnSubmit = (e, cb) => {
-    e.preventDefault();
-    console.log('this.state: ', this.state);
-    cb(this.state);
+  initializeState = () => {
+    this.setState(this.props.state);
   };
 
   render() {
-    const { state, handleOnChange, handleOnSubmit, props: { children } } = this;
+    const { state, handleOnChange, initializeState, props: { children } } = this;
 
     return children({
       state,
       handleOnChange,
-      handleOnSubmit,
+      initializeState,
     });
   }
 }
