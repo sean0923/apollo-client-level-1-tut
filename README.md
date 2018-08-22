@@ -191,3 +191,5 @@ const CREATE_POST_MUTATION = gql`
       >
 ```
 - createPost return promise so you can do .then and .catch
+
+### 13
