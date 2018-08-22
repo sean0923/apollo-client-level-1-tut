@@ -30,6 +30,9 @@ const Header = () => {
       <img src={logo} className="App-logo" alt="logo" />
       <FlexWrapper>
         <h1>Welcome to React</h1>
+        <Link to="/">
+          <h2> Home </h2>
+        </Link>
         <Link to="/post/new">
           <h2> New Post </h2>
         </Link>
