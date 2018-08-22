@@ -193,6 +193,11 @@ const CREATE_POST_MUTATION = gql`
 - createPost return promise so you can do .then and .catch
 
 ### 13 - Mutation As Prop Functions
-- cleaning up code (seperating mutation and form component) (did not do)
+- cleaning up code (seperating mutation and form component)
 
-### 14 - 
+### 14 - Update Mutation
+- PostForm.js will be reused 
+- Mutation component will be parent for create or update post
+- When on submit post form need to decide wether to update or create post
+- if update mutation is porps then populate with post data n get post id
+- ... process of making post form sharable btw update n create post mutation ...
