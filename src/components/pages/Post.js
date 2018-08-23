@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import UpdatePost from './post/UpdatePost';
 
 const POST_QUERY = gql`
   query onePost($id: ID!) {
@@ -27,8 +28,14 @@ const Post = ({ match: { params: { id } } }) => {
 
           return (
             <div>
-              <h1>{data.post.title}</h1>
-              <h3>{data.post.body}</h3>
+              <div>
+                <h1>{data.post.title}</h1>
+                <h3>{data.post.body}</h3>
+              </div>
+
+              <div>
+                <UpdatePost />
+              </div>
             </div>
           );
         }}

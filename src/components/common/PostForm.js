@@ -54,7 +54,16 @@ const PostForm = ({ createPost }) => {
                 });
             };
           } else {
-            console.log('...');
+            handleOnSubmit = e => {
+              e.preventDefault();
+              createPost({ variables: { title, body } })
+                .then(() => {
+                  initializeState();
+                })
+                .catch(err => {
+                  console.error('err: ', err);
+                });
+            };
           }
 
           return (

@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
-import Router from './layout/Router';
+import SwitchAndRoutes from './layout/SwitchAndRoutes';
 import Header from './layout/Header';
 
 import '../App.css';
@@ -19,7 +19,7 @@ class Layout extends Component {
         <BrowserRouter>
           <div className="App">
             <Header />
-            <Router />
+            <SwitchAndRoutes />
           </div>
         </BrowserRouter>
       </ApolloProvider>

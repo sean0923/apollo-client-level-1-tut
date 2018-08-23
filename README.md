@@ -201,3 +201,7 @@ const CREATE_POST_MUTATION = gql`
 - When on submit post form need to decide wether to update or create post
 - if update mutation is porps then populate with post data n get post id
 - ... process of making post form sharable btw update n create post mutation ...
+
+---
+- make UpdatePost.js component
+- add UpdatePost at Post.js
