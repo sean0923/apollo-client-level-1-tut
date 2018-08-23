@@ -26,15 +26,17 @@ const Post = ({ match: { params: { id } } }) => {
         {({ data, loading }) => {
           if (loading) return <h1>Loadgin...</h1>;
 
+          const { post: { id, title, body } } = data;
+
           return (
             <div>
               <div>
-                <h1>{data.post.title}</h1>
-                <h3>{data.post.body}</h3>
+                <h1>{title}</h1>
+                <h3>{body}</h3>
               </div>
 
               <div>
-                <UpdatePost />
+                <UpdatePost existingPostData={{ id, title, body }} />
               </div>
             </div>
           );

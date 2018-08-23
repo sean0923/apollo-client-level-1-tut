@@ -26,14 +26,14 @@ const GridWrapper = styled.div`
 
 const ButtonWrapper = styled.button`justify-self: end;`;
 
-const PostForm = ({ createPost }) => {
+const PostForm = ({ createPost, updatePost, existingPostData }) => {
   let initialFormValues;
   let handleOnSubmit;
 
   if (createPost) {
     initialFormValues = { title: '', body: '' };
   } else {
-    initialFormValues = { title: 'title value', body: 'body value' };
+    initialFormValues = { title: existingPostData.title, body: existingPostData.body };
   }
 
   return (
@@ -56,7 +56,7 @@ const PostForm = ({ createPost }) => {
           } else {
             handleOnSubmit = e => {
               e.preventDefault();
-              createPost({ variables: { title, body } })
+              updatePost({ variables: { title, body } })
                 .then(() => {
                   initializeState();
                 })

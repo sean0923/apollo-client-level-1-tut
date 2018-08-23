@@ -205,3 +205,7 @@ const CREATE_POST_MUTATION = gql`
 ---
 - make UpdatePost.js component
 - add UpdatePost at Post.js
+
+- write updatePost graphql query at graphcms
+- copy paste working query to UpdatePost
+
