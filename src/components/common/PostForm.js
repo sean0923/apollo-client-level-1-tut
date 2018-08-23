@@ -38,9 +38,9 @@ const PostForm = ({ createPost, updatePost, existingPostData }) => {
 
   return (
     <Wrapper>
-      <RenderPropsForForm state={initialFormValues}>
-        {({ state, handleOnChange, initializeState }) => {
-          const { title, body } = state;
+      <RenderPropsForForm formValues={initialFormValues}>
+        {({ formValues, handleOnChange, initializeState }) => {
+          const { title, body } = formValues;
 
           if (createPost) {
             handleOnSubmit = e => {

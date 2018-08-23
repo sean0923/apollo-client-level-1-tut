@@ -3,7 +3,7 @@ import { Component } from 'react';
 class RenderPropsForForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { ...props.state };
+    this.state = { ...props.formValues };
   }
 
   handleOnChange = e => {
@@ -13,14 +13,14 @@ class RenderPropsForForm extends Component {
   };
 
   initializeState = () => {
-    this.setState(this.props.state);
+    this.setState(this.props.formValues);
   };
 
   render() {
     const { state, handleOnChange, initializeState, props: { children } } = this;
 
     return children({
-      state,
+      formValues: state,
       handleOnChange,
       initializeState,
     });
