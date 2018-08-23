@@ -56,8 +56,9 @@ const PostForm = ({ createPost, updatePost, existingPostData }) => {
           } else {
             handleOnSubmit = e => {
               e.preventDefault();
-              updatePost({ variables: { title, body } })
+              updatePost({ variables: { id: existingPostData.id, title, body } })
                 .then(() => {
+                  console.log('successfully updated');
                   initializeState();
                 })
                 .catch(err => {
