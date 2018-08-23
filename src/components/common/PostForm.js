@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 //
 import RenderPropsForForm from '../renderProps/RenderPropsForForm';
@@ -86,6 +87,12 @@ const PostForm = ({ createPost, updatePost, existingPostData }) => {
       </RenderPropsForForm>
     </Wrapper>
   );
+};
+
+PostForm.propTypes = {
+  createPost: PropTypes.func,
+  updatePost: PropTypes.func,
+  existingPostData: PropTypes.object,
 };
 
 export default PostForm;
