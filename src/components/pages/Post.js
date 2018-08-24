@@ -11,33 +11,34 @@ const POST_QUERY = gql`
       title
       body
     }
+    isReadOnly @client
   }
 `;
 
 const Post = ({ match: { params: { id } } }) => {
   return (
     <div>
-      <Link to="/">
-        <h1>Home</h1>
-      </Link>
-      <div>Post</div>
-
       <Query query={POST_QUERY} variables={{ id }}>
         {({ data, loading }) => {
           if (loading) return <h1>Loadgin...</h1>;
 
           const { post: { id, title, body } } = data;
+          const { isReadOnly } = data;
 
-          return (
-            <div>
+          // 
+          if (isReadOnly) {
+            return (
               <div>
                 <h1>{title}</h1>
                 <h3>{body}</h3>
               </div>
+            );
+          }
 
-              <div>
-                <UpdatePost existingPostData={{ id, title, body }} />
-              </div>
+          // 
+          return (
+            <div>
+              <UpdatePost existingPostData={{ id, title, body }} />
             </div>
           );
         }}

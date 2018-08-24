@@ -3,13 +3,22 @@ import { BrowserRouter } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
+//
 import SwitchAndRoutes from './layout/SwitchAndRoutes';
 import Header from './layout/Header';
 
+//
 import '../App.css';
+
+//
+const defaultState = { isReadOnly: false };
 
 const client = new ApolloClient({
   uri: 'https://api-uswest.graphcms.com/v1/cjl1iqlw3069d01f160ophfxl/master',
+  clientState: {
+    defaults: defaultState,
+    resolvers: {},
+  },
 });
 
 class Layout extends Component {

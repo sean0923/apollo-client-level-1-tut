@@ -19,10 +19,7 @@ const UPDATE_POST_MUTATION = gql`
 const UpdatePost = ({ existingPostData }) => {
   return (
     <div>
-      <h2>Update Post</h2>
-      <Mutation
-        mutation={UPDATE_POST_MUTATION}
-      >
+      <Mutation mutation={UPDATE_POST_MUTATION}>
         {updatePost => {
           return <PostForm updatePost={updatePost} existingPostData={existingPostData} />;
         }}

@@ -214,4 +214,37 @@ PostForm.propTypes = {
 };
 ```
 
-### 15
+### 16 - Local State with Apollo Link State
+
+- Default state should be value fo defautls
+- resolvers should be empty obj for now
+
+```js
+const defaultState = { isReadOnly: true };
+
+const client = new ApolloClient({
+  uri: 'exampleUrl',
+  clientState: {
+    defaults: defaultState,
+    resolvers: {},
+  },
+});
+```
+
+One gql can hold more than one query
+```graphql
+const POST_QUERY = gql`
+  query onePost($id: ID!) {
+    post(where: { id: $id }) {
+      id
+      title
+      body
+    }
+
+    isReadOnly @client
+  }
+`;
+```
+Can fetch a data with @client on the right side of the object key
+
+Feels like redux ~~
