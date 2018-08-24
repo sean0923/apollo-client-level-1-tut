@@ -157,7 +157,7 @@ const Post = ({ match: { params: { id } } }) => {
 - get id from above code
 
 ### 11 - Understanding Mutations
-- go go graphcms
+- go to graphcms
 - click setting on sidebar
 - click public api permission dropdown from read -> open
 - write mutation at graphcms
@@ -196,11 +196,7 @@ const CREATE_POST_MUTATION = gql`
 - cleaning up code (seperating mutation and form component)
 
 ### 14 - Update Mutation
-- PostForm.js will be reused 
-- Mutation component will be parent for create or update post
-- When on submit post form need to decide wether to update or create post
-- if update mutation is porps then populate with post data n get post id
-- ... process of making post form sharable btw update n create post mutation ...
+- Make post form reusable by behave differntly depend on what props it gets
 ---
 - make UpdatePost.js component
 - add UpdatePost at Post.js
@@ -218,3 +214,4 @@ PostForm.propTypes = {
 };
 ```
 
+### 15
