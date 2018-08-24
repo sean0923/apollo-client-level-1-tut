@@ -11,7 +11,7 @@ import Header from './layout/Header';
 import '../App.css';
 
 //
-const defaultState = { isReadOnly: false };
+const defaultState = { isReadOnly: true };
 
 const client = new ApolloClient({
   uri: 'https://api-uswest.graphcms.com/v1/cjl1iqlw3069d01f160ophfxl/master',

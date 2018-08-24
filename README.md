@@ -248,3 +248,23 @@ const POST_QUERY = gql`
 Can fetch a data with @client on the right side of the object key
 
 Feels like redux ~~
+
+### 17 - Modifying Local State with ApolloConsumer component
+- make ToggleEditButton.js
+- use ApolloConsumer (RenderPorps)
+
+```js
+<ApolloConsumer>
+  {client => {
+    return (
+      <Wrapper
+        onClick={() => {
+          client.writeData({ data: { isReadOnly: !isReadOnly } });
+        }}
+      >
+        {text}
+      </Wrapper>
+    );
+  }}
+</ApolloConsumer>
+```
