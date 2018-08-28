@@ -20,8 +20,16 @@ const UpdatePost = ({ existingPostData }) => {
   return (
     <div>
       <Mutation mutation={UPDATE_POST_MUTATION}>
-        {updatePost => {
-          return <PostForm updatePost={updatePost} existingPostData={existingPostData} />;
+        {(updatePost, result) => {
+          return (
+            <PostForm
+              updatePost={updatePost}
+              existingPostData={existingPostData}
+              setIsReadOnlyToTrue={() => {
+                result.client.writeData({ data: { isReadOnly: true } });
+              }}
+            />
+          );
         }}
       </Mutation>
     </div>

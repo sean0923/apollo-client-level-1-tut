@@ -268,3 +268,27 @@ Feels like redux ~~
   }}
 </ApolloConsumer>
 ```
+
+### 18 - Updating Local State from Mutations
+Mutation RenderProps comes with more than 1 args
+2nd args contains { data, client, ...}
+
+After update post, make isReadOnly to true
+
+Got client.writeData from RenderProps mutation
+
+```js
+<Mutation mutation={UPDATE_POST_MUTATION}>
+  {(updatePost, result) => {
+    return (
+      <PostForm
+        updatePost={updatePost}
+        existingPostData={existingPostData}
+        setIsReadOnlyToTrue={() => {
+          result.client.writeData({ data: { isReadOnly: true } });
+        }}
+      />
+    );
+  }}
+</Mutation>
+```

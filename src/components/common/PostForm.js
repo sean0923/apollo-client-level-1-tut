@@ -27,7 +27,7 @@ const GridWrapper = styled.div`
 
 const ButtonWrapper = styled.button`justify-self: end;`;
 
-const PostForm = ({ createPost, updatePost, existingPostData }) => {
+const PostForm = ({ createPost, updatePost, existingPostData, setIsReadOnlyToTrue }) => {
   let initialFormValues;
   let handleOnSubmit;
 
@@ -61,6 +61,7 @@ const PostForm = ({ createPost, updatePost, existingPostData }) => {
                 .then(() => {
                   console.log('successfully updated');
                   initializeState();
+                  setIsReadOnlyToTrue();
                 })
                 .catch(err => {
                   console.error('err: ', err);
