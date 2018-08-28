@@ -292,3 +292,43 @@ Got client.writeData from RenderProps mutation
   }}
 </Mutation>
 ```
+
+### 19 - Sorting & Pagination
+
+Graphcms comes with sort, skip, first
+```graphql
+query allPosts($skip: Int) {
+  posts(orderBy: updatedAt_DESC, skip: $skip, first: 2) {
+    id
+    title
+    updatedAt
+  }
+}
+```
+
+<Query> renderProps comes with fetchMore
+fetchMore is a function that object as argument which has
+key of `variables` and `updateQuery`.
+
+`variable` takes skip
+`updateQuery` takes ...
+```js
+<button
+  onClick={() =>
+    fetchMore({
+      variables: {
+        skip: posts.length,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return prev;
+        return Object.assign({}, prev, {
+          posts: [...prev.posts, ...fetchMoreResult.posts],
+        });
+      },
+    })}
+>
+  load more
+</button>
+```
+
+first: <number> decide how much will be fetch each time

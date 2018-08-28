@@ -2,39 +2,65 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
+//
+const postPerLoading = 2;
+
+// 
+const Wrapper = styled.div`text-align: left;`;
+
+// 
 const POSTS_QUERY = gql`
-  query allPosts {
-    posts {
+  query allPosts($skip: Int) {
+    posts(orderBy: updatedAt_DESC, skip: $skip, first: ${postPerLoading}) {
       id
       title
-      body
+      updatedAt
     }
   }
 `;
 
 const Home = () => {
   return (
-    <div>
+    <Wrapper>
       <Query query={POSTS_QUERY}>
-        {({ loading, data }) => {
+        {({ loading, data, fetchMore }) => {
           if (loading) return <div>Loading...</div>;
           const { posts } = data;
 
           return (
-            <div>
-              {posts.map(({ title, id }, idx) => {
-                return (
-                  <Link key={idx} to={`/post/${id}`}>
-                    <h2>{title}</h2>
-                  </Link>
-                );
-              })}
-            </div>
+            <React.Fragment>
+              <ol>
+                {posts.map(({ title, id }, idx) => {
+                  return (
+                    <li key={idx}>
+                      <Link to={`/post/${id}`}>{title}</Link>
+                    </li>
+                  );
+                })}
+              </ol>
+              <button
+                onClick={() =>
+                  fetchMore({
+                    variables: {
+                      skip: posts.length,
+                    },
+                    updateQuery: (prev, { fetchMoreResult }) => {
+                      if (!fetchMoreResult) return prev;
+                      return Object.assign({}, prev, {
+                        posts: [...prev.posts, ...fetchMoreResult.posts],
+                      });
+                    },
+                  })}
+              >
+                load more
+              </button>
+            </React.Fragment>
           );
         }}
       </Query>
-    </div>
+    </Wrapper>
   );
 };
 
